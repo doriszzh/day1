@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+    //创建组件的三种方法
+    //1.createClass({})方法
+    // var Component1=React.createClass({
+    //     render(){
+    //        return <h2 className={this.props.class}>{this.props.class}1111{this.props.abv}</h2>
+    //       } 
+    // })
+    //函数直接创建
+    // function Component1() {
+    //     return <div>
+                  
+    //               <p>用户名：<input type="text"/></p>
+    //            </div>
+    // }
+    //es6的方法class 组件名 extends React.Component{}
+    class Component1 extends React.Component{
+        render(){
+            return <p className={this.props.name}>请输入信息：</p>
+        }
+    }
+    //组件嵌套
+    var Component2=React.createClass({
+        render(){
+            return <h3><span>name:</span><input type='text'/></h3>
+        }
+    }) 
+    function Component3(){
+        return <div>
+                <Component1  />
+                <Component2/>
+               </div>
+    }
+    ReactDOM.render(
+        
+        <Component3 class="abc" name="web"/>,
+        document.getElementById('app')
+    )
+    </script>
+</body>
+</html>
